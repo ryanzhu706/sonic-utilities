@@ -2610,24 +2610,24 @@ This command displays the routing policy that takes precedence over the other ro
       Exit routemap
   ```
 
-**show suppress-fib-pending**
+**show bgp device-global**
 
-This command is used to show the status of suppress pending FIB feature.
-When enabled, BGP will not advertise routes which aren't yet offloaded.
+This command displays BGP device global configuration.
 
 - Usage:
-  ```
-  show suppress-fib-pending
+  ```bash
+  show bgp device-global
   ```
 
-- Examples:
-  ```
-  admin@sonic:~$ show suppress-fib-pending
-  Enabled
-  ```
-  ```
-  admin@sonic:~$ show suppress-fib-pending
-  Disabled
+- Options:
+  - _-j,--json_: display in JSON format
+
+- Example:
+  ```bash
+  admin@sonic:~$ show bgp device-global
+  TSA      W-ECMP
+  -------  -------
+  enabled  enabled
   ```
 
 Go Back To [Beginning of the document](#) or [Beginning of this section](#bgp)
@@ -2722,22 +2722,24 @@ This command is used to remove particular IPv4 or IPv6 BGP neighbor configuratio
   admin@sonic:~$ sudo config bgp remove neighbor SONIC02SPINE
   ```
 
-**config suppress-fib-pending**
+**config bgp device-global tsa/w-ecmp**
 
-This command is used to enable or disable announcements of routes not yet installed in the HW.
-Once enabled, BGP will not advertise routes which aren't yet offloaded.
+This command is used to manage BGP device global configuration.
+
+Feature list:
+1. TSA - Traffic-Shift-Away
+2. W-ECMP - Weighted-Cost Multi-Path
 
 - Usage:
-  ```
-  config suppress-fib-pending <enabled|disabled>
+  ```bash
+  config bgp device-global tsa <enabled|disabled>
+  config bgp device-global w-ecmp <enabled|disabled>
   ```
 
 - Examples:
-  ```
-  admin@sonic:~$ sudo config suppress-fib-pending enabled
-  ```
-  ```
-  admin@sonic:~$ sudo config suppress-fib-pending disabled 
+  ```bash
+  admin@sonic:~$ config bgp device-global tsa enabled
+  admin@sonic:~$ config bgp device-global w-ecmp enabled
   ```
 
 Go Back To [Beginning of the document](#) or [Beginning of this section](#bgp)
